@@ -42,7 +42,7 @@ RUN \
 	/defaults/rutorrent-conf && \
  curl -o \
  /tmp/rutorrent.tar.gz -L \
-	"https://github.com/Novik/ruTorrent/archive/${rutorrent_commit}.tar.gz" && \
+	"https://github.com/Novik/ruTorrent/archive/${RUTORRENT_COMMIT}.tar.gz" && \
  tar xf \
  /tmp/rutorrent.tar.gz -C \
 	/usr/share/webapps/rutorrent --strip-components=1 && \
