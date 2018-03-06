@@ -324,7 +324,7 @@ pipeline {
                        "body": "**LinuxServer Changes:**\\n\\n'${LS_RELEASE_NOTES}'\\n**'${EXT_REPO}' Changes:**\\n\\n' > start
                        # Grabbing the current release body from external repo
               elif [ ${EXT_RELEASE_TYPE} == 'github_commit' ]; then
-                curl -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/commits/${EXT_GIT_BRANCH} | jq '. |.message' | sed 's:^.\\(.*\\).$:\\1:' > releasebody.json
+                curl -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/commits/${EXT_GIT_BRANCH} | jq '. | .commit.message' | sed 's:^.\\(.*\\).$:\\1:' > releasebody.json
                 # Creating the start of the json payload
                 echo '{"tag_name":"'${EXT_RELEASE}'-pkg-'${PACKAGE_TAG}'-ls'${LS_TAG_NUMBER}'",\
                        "target_commitish": "master",\
